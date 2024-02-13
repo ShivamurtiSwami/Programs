@@ -1,0 +1,47 @@
+public class Main {
+    // Function to mark a contiguous region of 0's as visited
+    private static void markVisited(int[][] matrix, int row, int col) {
+        // If out of bounds or not 0, return
+        if (row < 0 || col < 0 || row >= matrix.length || col >= matrix[0].length || matrix[row][col] != 0) {
+            return;
+        }
+        // Mark current cell as visited
+        matrix[row][col] = -1;
+        // Recursively mark adjacent cells
+        markVisited(matrix, row + 1, col);
+        markVisited(matrix, row - 1, col);
+        markVisited(matrix, row, col + 1);
+        markVisited(matrix, row, col - 1);
+    }
+
+    public static String SearchingChallenge(String[] strArr) {
+        // Convert the input into a 2D matrix of integers
+        int[][] matrix = new int[strArr.length][strArr[0].length()];
+        for (int i = 0; i < strArr.length; i++) {
+            for (int j = 0; j < strArr[i].length(); j++) {
+                matrix[i][j] = strArr[i].charAt(j) - '0';
+            }
+        }
+
+        int holesCount = 0;
+        // Traverse the matrix
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                // If cell is 0, mark it and increment holes count
+                if (matrix[i][j] == 0) {
+                    markVisited(matrix, i, j);
+                    holesCount++;
+                }
+            }
+        }
+
+        return String.valueOf(holesCount);
+    }
+
+    public static void main(String[] args) {
+        // keep this function call here     
+        Scanner s = new Scanner(System.in);
+        System.out.print(SearchingChallenge(s.nextLine())); 
+        s.close();
+    }
+}
