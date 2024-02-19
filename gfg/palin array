@@ -1,0 +1,29 @@
+
+
+/*Complete the Function below*/
+class GfG
+{
+	public static int palinArray(int[] a, int n)
+           {
+               for(int val:a){
+                   if(!checkPalin(val)){
+                       return 0;
+                   }
+               }
+               return 1;
+           }
+           public static boolean checkPalin(int n){
+               int ans=0;
+               int temp=n;
+               while(n!=0){
+                   int rem=n%10;
+                   ans =ans*10+rem;
+                   n=n/10;
+               }
+               if(ans==temp){
+                   return true;
+               }
+               else 
+               return false;
+           }
+}
