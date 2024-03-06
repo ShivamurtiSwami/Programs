@@ -1,0 +1,14 @@
+$(document).ready(function() {
+  const rootApp = $("#root");
+  rootApp.html('<button id="toggleButton">ON</button>'); // Added an id to the button element
+  
+  // Event listener for the button click
+  $("#toggleButton").click(function() {
+    const button = $(this);
+    if (button.text() === "ON") {
+      button.text("OFF");
+    } else {
+      button.text("ON");
+    }
+  });
+});
